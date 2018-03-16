@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fl_project/ListPage.dart';
 import 'package:fl_project/PaintPage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:fl_project/Canvas.dart';
+import 'package:fl_project/LayoutPage.dart';
+import 'package:fl_project/InternetPage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -78,7 +82,40 @@ class _SampleAppPageState extends State<SampleAppPage> {
     Navigator.of(context).push(
         new MaterialPageRoute(
             builder: (BuildContext con) {
-              return new PaintPage();
+              return new PaintPage(title: "asdasd");
+            }
+        )
+
+    );
+  }
+
+  _toLayoutPage() {
+    Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext con) {
+              return new Signature();
+            }
+        )
+
+    );
+  }
+
+  _toLayoutsPage() {
+    Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext con) {
+              return new layoutPage();
+            }
+        )
+
+    );
+  }
+
+  _toIntentPage() {
+    Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext con) {
+              return new MyHomePage();
             }
         )
 
@@ -108,6 +145,24 @@ class _SampleAppPageState extends State<SampleAppPage> {
             padding: new EdgeInsets.only(
                 left: 30.0, right: 30.0, top: 30.0, bottom: 30.0),
           ),
+          new CupertinoButton(
+            onPressed: _toLayoutPage,
+            child: new Text("列表"),
+            color: Colors.blue,
+            padding: new EdgeInsets.only(
+                left: 30.0, right: 30.0, top: 30.0, bottom: 30.0),),
+          new CupertinoButton(
+            onPressed: _toLayoutsPage,
+            child: new Text("布局"),
+            color: Colors.brown,
+            padding: new EdgeInsets.only(
+                left: 30.0, right: 30.0, top: 30.0, bottom: 30.0),),
+          new CupertinoButton(
+            onPressed: _toIntentPage,
+            child: new Text("网络请求"),
+            color: Colors.brown,
+            padding: new EdgeInsets.only(
+                left: 30.0, right: 30.0, top: 30.0, bottom: 30.0),),
         ],
 
       ),
