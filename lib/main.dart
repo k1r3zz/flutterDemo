@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:fl_project/Canvas.dart';
 import 'package:fl_project/LayoutPage.dart';
 import 'package:fl_project/InternetPage.dart';
+import 'package:fl_project/MaterialPage.dart';
+
 
 void main() => runApp(new MyApp());
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
 //      title: 'Welcome to Flutter',
 //      home: new Scaffold(
 //        appBar: new AppBar(
-//          title: new Text('Welcome '),
+//          title: new TexAM,SDGFKJt('Welcome '),
 //        ),
 //        body: new Center(
 //          //child: new Text('Hello World'), // Replace the highlighted text...
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
       ),
 //      home: new RandomWords(),
       home: new SampleAppPage(),
+
     );
   }
 
@@ -104,7 +107,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
     Navigator.of(context).push(
         new MaterialPageRoute(
             builder: (BuildContext con) {
-              return new layoutPage();
+              return new layoutPage("1111");
             }
         )
 
@@ -122,11 +125,41 @@ class _SampleAppPageState extends State<SampleAppPage> {
     );
   }
 
+  _toMaterialPage() {
+    Navigator.of(context).push(
+        new MaterialPageRoute(
+            builder: (BuildContext con) {
+              return new MaterialPage();
+            }
+        )
+
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("simple app"),
+      ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+            new UserAccountsDrawerHeader(
+              accountName: new Text("YYC"),
+              accountEmail: new Text("777777@qq.com"),
+              currentAccountPicture: new GestureDetector(
+                onTap: () {},
+                child: new CircleAvatar(
+                  backgroundImage: new NetworkImage(
+                      "http://d.hiphotos.baidu.com/zhidao/pic/item/cc11728b4710b9121ba52d66c4fdfc03934522c6.jpg"),
+                ),
+              ),
+            ),
+
+          ],
+
+        ),
       ),
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -147,7 +180,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
           ),
           new CupertinoButton(
             onPressed: _toLayoutPage,
-            child: new Text("列表"),
+            child: new Text("列表2"),
             color: Colors.blue,
             padding: new EdgeInsets.only(
                 left: 30.0, right: 30.0, top: 30.0, bottom: 30.0),),
@@ -163,6 +196,11 @@ class _SampleAppPageState extends State<SampleAppPage> {
             color: Colors.brown,
             padding: new EdgeInsets.only(
                 left: 30.0, right: 30.0, top: 30.0, bottom: 30.0),),
+
+          new IconButton(
+            icon: new Icon(Icons.title),
+            onPressed: _toMaterialPage,
+          )
         ],
 
       ),
